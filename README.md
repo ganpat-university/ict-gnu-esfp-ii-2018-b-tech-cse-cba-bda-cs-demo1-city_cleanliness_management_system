@@ -15,5 +15,5 @@ Specific task Group Member-2
 4) Display names of all the areas which are having no cctv camera installed and no of bins is 0. 
 
 Specific task Group Member-3                                                                                                             
-5) Display names of all the areas in which no of room per house is at least 3 and street no is 7.
+5) Display names of all the areas in which no of room per house is at least 3 and street no is 7.                                          
 6) Display the names of all the areas which are cleaned by the sweeper named ‘Hasan’ and are having 2 bins perhouse.
