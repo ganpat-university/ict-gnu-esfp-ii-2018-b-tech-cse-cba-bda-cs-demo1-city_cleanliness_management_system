@@ -1,0 +1,206 @@
+#include<iostream>
+#include<fstream>
+#include<cstring>
+using namespace std;
+class area
+{
+	int no_of_roundabouts , no_of_streets , no_of_houses , no_of_bins , no_of_undesired_species , no_of_sewages , no_of_trees;
+	int no_of_industries , no_of_room_perhouse , no_of_bin_perhouse, no_of_cctv , no_of_person_perhouse , i;
+	int flag,k;
+	string designation_of_member_cleaned , name_of_street ;
+	char  name_of_member_cleaned[20] , area_id[20] , area_name[20];
+	public:
+	int get_data()
+	{
+		flag=0;
+	ab :	cout<<"Enter area name :";
+		cin>>area_name;
+		k = strlen(area_name) - 1;
+		for(i=0;i<=k;i++)
+		{
+			if((area_name[i]>=65 && area_name[i]<=90) || (area_name[i]>=97 && area_name[i]<=122))
+				{  
+				}
+			else
+				{
+					cout<<"Enter valid name"<<endl;
+					goto ab;
+				}
+		}
+		cd : cout<<"Enter area ID : ";
+		cin>>area_id;
+		int s=strlen(area_id) - 1;
+		for(i=0;i<=s;i++)
+		{
+			if(area_id[i]>=48 && area_id[i]<=57)
+			{
+			}
+			else
+			{
+				cout<<"Enter valid ID"<<endl;
+				goto cd;
+			}
+		}
+		cout<<"Enter No. of Roundabouts :";
+		cin>>no_of_roundabouts;
+		cout<<"Enter No. of streets :";
+		cin>>no_of_streets;
+		cout<<"Enter No. of houses :";
+		cin>>no_of_houses;
+		cout<<"Enter No. of bins :";
+		cin>>no_of_bins;
+		cout<<"Enter No. of bin per house :";
+		cin>>no_of_bin_perhouse;
+		cout<<"Enter No of undesired species :";
+		cin>>no_of_undesired_species;
+		cout<<"Enter No. of sewages :";
+		cin>>no_of_sewages;
+		cout<<"Enter No. of trees :";
+		cin>>no_of_trees;
+		cout<<"Enter No. of industries :";
+		cin>>no_of_industries;
+		cout<<"Enter No. of rooms per house :";
+		cin>>no_of_room_perhouse;
+		cout<<"Enter no. of CCTV :";
+		cin>>no_of_cctv;
+		cout<<"Enter No. of person per house :";
+		cin>>no_of_person_perhouse;
+		cout<<"Enter name of street :";
+		cin>>name_of_street;
+		cout<<"Enter Name of member cleaned :";
+		cin>>name_of_member_cleaned;
+		cout<<"Enter designation of member cleaned :";
+		cin>>designation_of_member_cleaned;
+	}
+
+	void show_data()
+	{
+	
+		ofstream tob("project2.txt", ios::binary | ios::out);
+		
+		tob<<"*************************************************"<<endl;
+		tob<<"\tCity-Cleanliness Management System"<<endl;
+		tob<<"*************************************************"<<endl;
+
+		tob<<"\nArea name :"<<area_name<<endl;
+		tob<<"Name of street :"<<name_of_street<<endl;
+		tob<<"Name of member cleaned :"<<name_of_member_cleaned<<endl;
+		tob<<"Designation of member cleaned :"<<designation_of_member_cleaned<<endl;
+		tob<<"Area Id :"<<area_id<<endl;
+		tob<<"No. of roundabouts :"<<no_of_roundabouts<<endl;
+		tob<<"No. of streets :"<<no_of_streets<<endl;
+		tob<<"No. of houses :"<<no_of_houses<<endl;
+		tob<<"No. of bins :"<<no_of_bins<<endl;
+		tob<<"No. of bins per house :"<<no_of_bin_perhouse<<endl;
+		tob<<"No. of undesired species :"<<no_of_undesired_species<<endl;
+		tob<<"No. of sewages :"<<no_of_sewages<<endl;
+		tob<<"No. of trees :"<<no_of_trees<<endl;
+		tob<<"No. of industries :"<<no_of_industries<<endl;
+		tob<<"No. of rooms per house :"<<no_of_room_perhouse<<endl;
+		tob<<"No. of CCTV :"<<no_of_cctv<<endl;
+		tob<<"No. of person per house :"<<no_of_person_perhouse<<endl;
+		//cout<<"No. of member cleaned :"<<no_of_member_cleaned<<endl<<endl;*/
+		 
+		if(no_of_streets<5 && no_of_sewages==0)
+		{
+			flag++;
+			cout<<"\n1. For condition : If no. of streets < 5 and no. of sewages = 0\n   Area name is : "<<area_name<<endl<<endl;
+			tob<<"\n1. For condition : If no. of streets < 5 and no. of sewages = 0\n   Area name is : "<<area_name<<endl<<endl;
+		}
+		 
+		if(strcmp(name_of_member_cleaned,"munna")==0 && no_of_person_perhouse<4)
+		{
+			flag++;
+			cout<<"\n2. For condition : If name of cleaner is = munna and no. of person per house < 4\n   Area name is : "<<area_name<<"\n\n";
+			tob<<"\n2. For condition : If name of cleaner is = munna and no. of person per house < 4\n   Area name is : "<<area_name<<"\n\n";
+		}
+ 
+		if(no_of_bins==2 && no_of_trees>7)
+		{
+			flag++;
+			cout<<"\n3. For condition : If total number of bins = 2 and number of trees > 7\n   Area name : "<<area_name<<endl<<endl;
+			tob<<"\n3. For condition : If total number of bins = 2 and number of trees > 7\n   Area name : "<<area_name<<endl<<endl;
+		}	
+		
+		if(no_of_cctv==0 && no_of_bins==0)
+		{
+			flag++;
+			cout<<"\n4. For condition : If total number of CCTV = 0 and number of bins = 0\n   Area name : "<<area_name<<endl<<endl;
+			tob<<"\n4. For condition : If total number of CCTV = 0 and number of bins = 0\n   Area name : "<<area_name<<endl<<endl;
+		}	
+		
+		if(no_of_room_perhouse>=3 && no_of_streets==7)
+		{
+			flag++;
+			cout<<"\n5. For condition : If number of rooms per house >= 3 and number of streets =7\n   Area name : "<<area_name<<endl<<endl;
+			tob<<"\n5. For condition : If number of rooms per house >= 3 and number of streets =7\n   Area name : "<<area_name<<endl<<endl;
+		}		
+		
+		if(strcmp(name_of_member_cleaned,"hasan")==0 && no_of_bin_perhouse==2)
+		{
+			flag++;
+			cout<<"\n6. For condition : If name of cleaner is : hasan and number of bins per house : 2\n   Area name : "<<area_name<<endl<<endl;
+			tob<<"\n6. For condition : If name of cleaner is : hasan and number of bins per house : 2\n   Area name : "<<area_name<<endl<<endl;
+		}
+		if(flag==0)
+		{
+			cout<<"\nNo condition satisfied ";
+			tob<<"\nNo condition satisfied ";
+		}
+		tob.close();
+	}	
+			
+	
+};
+class city 
+{
+	int i;
+	char c_id[5];
+	string c_name , c_area;
+	int c_population;
+	public:
+	int getdata()
+	{
+		cout<<"\n\nEnter the city ID :";
+		cin>>c_id;
+		cout<<"Enter name of city :";
+		cin>>c_name;
+		cout<<"Enter the area of city :";
+		cin>>c_area;
+		cout<<"enter the population of city :";
+		cin>>c_population;
+		cout<<endl<<endl;
+	}
+	void showdata()
+	{
+		/*ofstream tob("project2.txt", ios::binary | ios::app | ios::out);
+
+		tob<<"\n\nThe ID of city is :"<<c_id<<endl;
+		tob<<"The name of city is :"<<c_name<<endl;
+		tob<<"The area of city is :"<<c_area<<endl;
+		tob<<"Population is :"<<c_population<<endl;
+	
+		tob.close();*/
+	}
+};
+	
+int main()
+{
+	cout<<"*************************************************"<<endl;
+	cout<<"\tCity-Cleanliness Management System"<<endl;
+	cout<<"*************************************************"<<endl;
+	area obj[5];
+	city ob[5];
+	int i;
+	for(i=0;i<1;i++)
+	{
+	obj[i].get_data();
+	ob[i].getdata();
+	}
+	for(i=0;i<1;i++)
+	{
+	obj[i].show_data();
+	ob[i].showdata();
+	}
+	return 0;	
+}
